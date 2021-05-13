@@ -1,15 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import { store } from './redux/reExport';
+import {Route, BrowserRouter, Switch, Redirect} from 'react-router-dom'
+import Admin from './master/Admin'
+import Welcome from './master/Welcome'
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={Welcome} />
+          <Route path="/admin" component={Admin} />
+          <Redirect to='/weocome' path='/' />
+        </Switch>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
